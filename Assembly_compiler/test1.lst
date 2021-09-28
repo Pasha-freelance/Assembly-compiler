@@ -1,0 +1,71 @@
+				Assembly compiler  28-09-2021 11:57:01
+
+								Перший Прохід
+
+				1  00000000				DATA    segment				2  00000000  				V1 db -128				3  00000001  				V2 db 255				4  00000002  				V4 db -128				5  00000003  				V5 db -127				6		
+				7  00000004  				B1 dw 32768				8  00000006  				B2 dw -32768				9  00000008  				B3 dw 32767				10  0000000A  				B4 dw -32768				11  0000000C  				B6 dw 65535				12		
+				13  0000000E  				A1 dd 0fah				14  00000012  				A2 dd -100100b				15  00000016  				A4 db 100100b				16		
+				17		E equ L2
+				18		  = -00FA		 E1 equ -0fah
+				19		  = -0017		 E2 equ -23
+				20		  = 0017		 E23 equ 23
+				21		  = 00010001		 E25 equ 65537
+				22		E8 equ ah
+				23		E9 equ eax
+				24		  = [ EDX * 2 ]		 E0 equ [edx*2]
+				25		  = BYTE PTR DS : [ EBP * 2 ]		 E10 equ byte ptr ds:[ebp*2]
+				26  00000017				DATA    ends				27		
+				28  00000000				CODE segment				29  00000000  				L1:				30  00000000  				jmp L1				31  00000002  				jmp L2				32  00000007  				jz L1				33  00000009  				jz L2				34  0000000F  				    stosd				35  00000010  				    dec al				36  00000012  				    dec eax				37  00000013  				    dec ah				38  00000015  				    dec ebp				39  00000016  				    dec E8				40  00000018  				    dec E9				41		
+				42  00000019  				    mul byte ptr E0				43  00000020  				    mul dword ptr E0				44  00000027  				    mul E10				45  0000002F  				    mul dword ptr[eax*2]				46  00000036  				    mul dword ptr[ecx*2]				47  0000003D  				    mul dword ptr ds:[edx*2]				48  00000044  				    mul dword ptr es:[ebx*2]				49  0000004C  				    mul dword ptr ss:[ebp*2]				50  00000053  				    mul dword ptr[esi*2]				51  0000005A  				    mul dword ptr gs:[edi*2]				52  00000062  				    mul dword ptr[edi*4]				53  00000069  				    mul dword ptr[edi*8]				54  00000070  				    mul dword ptr gs:[edi*1]				55  00000073  				    mul byte ptr[eax*2]				56  0000007A  				    mul byte ptr fs:[ecx*2]				57  00000082  				    mul byte ptr[edx*2]				58  00000089  				    mul byte ptr[ebx*2]				59  00000090  				    mul byte ptr ds:[ebp*2]				60  00000098  				    mul byte ptr[esi*2]				61  0000009F  				    mul byte ptr ss:[edi*2]				62  000000A7  				    mul byte ptr ds:[edi*4]				63  000000AE  				    mul byte ptr ss:[edi*8]				64  000000B6  				    mul byte ptr[edi*1]				65		
+				66  000000B8  				    movzx  eax,ah				67  000000BB  				    movzx  eax,E8				68  000000BE  				    movzx  E9,bl				69  000000C1  				    movzx  ecx,bl				70  000000C4  				    movzx  ecx,bl				71  000000C7  				    movzx  edx,bl				72  000000CA  				    movzx  ebx,bl				73  000000CD  				    movzx  ebp,bl				74  000000D0  				    movzx  esp,bl				75  000000D3  				    movzx  esi,bl				76  000000D6  				    movzx  edi,bl				77  000000D9  				    movzx  E9,E8				78		
+				79  000000DC  				    and E0,E8				80  000000E3  				    and ds:[ecx*2],eax				81  000000EA  				    and E0,ecx				82  000000F1  				    and gs:[ebx*2],ebx				83  000000F9  				    and ss:[ebp*2],edx				84  00000100  				    and [esi*2],ah				85  00000107  				    and ss:[edi*2],bh				86  0000010F  				    and [edi*4],ch				87  00000116  				    and [edi*8],ebp				88  0000011D  				    and [edi*1],esp				89  0000011F  				    and [eax*2],eax				90  00000126  				    and ds:[ecx*2],bl				91  0000012D  				    and fs:[edx*2],ch				92  00000135  				    and [ebx*2],ebp				93  0000013C  				    and ds:[ebp*2],esp				94  00000144  				    and [esi*2],edi				95  0000014B  				    and [edi*2],esi				96  00000152  				    and es:[edi*4],esi				97  0000015A  				    and [edi*8],edi				98  00000161  				    and ss:[edi*1],ebp				99		
+				100  00000164  				    or E8,[eax*2]				101  0000016B  				    or ah,ds:[ecx*2]				102  00000172  				    or ah,E0				103  00000179  				    or eax,gs:[ebx*2]				104  00000181  				    or eax,ss:[ebp*2]				105  00000188  				    or eax,[esi*2]				106  0000018F  				    or esp,ss:[edi*2]				107  00000197  				    or esp,[edi*4]				108  0000019E  				    or esp,[edi*8]				109  000001A5  				    or ebp,[edi*1]				110  000001A7  				    or ebp,[eax*2]				111  000001AE  				    or ebp,ds:[ecx*2]				112  000001B5  				    or ecx,fs:[edx*2]				113  000001BD  				    or ecx,[ebx*2]				114  000001C4  				    or ecx,ds:[ebp*2]				115  000001CC  				    or ecx,[esi*2]				116  000001D3  				    or ecx,[edi*2]				117  000001DA  				    or ch,es:[edi*4]				118  000001E2  				    or ch,[edi*8]				119  000001E9  				    or ch,ss:[edi*1]				120		
+				121  000001EC  				    test al,-23				122  000001EE  				    test eax,23				123  000001F3  				    test eax,0fah				124  000001F8  				    test eax,-0fah				125  000001FD  				    test edx,45				126  00000203  				    test bh,-1010101b				127  00000206  				    test bh,100101b				128  00000209  				    test bh,250				129  0000020C  				    test bh,255				130  0000020F  				    test bh,-128				131  00000212  				    test bh,-129				132  00000215  				    test bh,-250				133  00000218  				    test bh,-255				134  0000021B  				    test E8,-256				135		
+				136  0000021E  				    mov dword ptr[eax*2],101010b				137  00000229  				    mov dword ptr es:[ecx*2],0fah				138  00000235  				    mov dword ptr[edx*2],-0fah				139  00000240  				    mov dword ptr[ebx*2],0fffh				140  0000024B  				    mov dword ptr ss:[ebp*2],1011001b				141  00000256  				    mov dword ptr[esi*2],-101010b				142  00000261  				    mov dword ptr[edi*2],-129				143  0000026C  				    mov dword ptr[edi*4],231				144  00000277  				    mov dword ptr ss:[edi*8],100				145  00000283  				    mov dword ptr[edi*1],123				146  00000289  				    mov byte ptr[eax*2],129				147  00000291  				    mov byte ptr es:[ecx*2],-19				148  0000029A  				    mov byte ptr[edx*2],-0ffh				149  000002A2  				    mov byte ptr ds:[ebx*2],-101010b				150  000002AA  				    mov byte ptr ds:[ebp*2],-10010011b				151  000002B3  				    mov byte ptr[esi*2],-13				152  000002BB  				    mov byte ptr ss:[edi*2],255				153  000002C4  				    mov byte ptr[edi*4],-256				154  000002CC  				    mov byte ptr fs:[edi*8],0fah				155  000002D5  				    mov byte ptr ds:[edi*1],-0fah				156  000002D8  				    mov E10,-0fah				157  000002E1  				    L2:				158  000002E1  				    jmp L1				159  000002E6  				    jmp L2				160  000002E8  				    jmp E				161  000002EA  				    jz L1				162  000002F0  				    jz L2				163  000002F2				CODE ends				164		end
+
+
+				  User defined segments
+				Name     Capacity    Size 
+				DATA      32-bit    00000017 
+				CODE      32-bit    000002F2 
+
+
+				  Segment registers info
+				Name     Destination 
+				CS        CODE
+				DS        DATA
+				ES        NOTHING
+				FS        NOTHING
+				GS        NOTHING
+				SS        NOTHING
+
+
+				  User identifiers info
+				Name     Type		      Displacement 
+				DATA     SEGMENT         		00000000 
+				V1       BYTE       DATA 		00000000 
+				V2       BYTE       DATA 		00000001 
+				V4       BYTE       DATA 		00000002 
+				V5       BYTE       DATA 		00000003 
+				B1       WORD       DATA 		00000004 
+				B2       WORD       DATA 		00000006 
+				B3       WORD       DATA 		00000008 
+				B4       WORD       DATA 		0000000A 
+				B6       WORD       DATA 		0000000C 
+				A1       DWORD      DATA 		0000000E 
+				A2       DWORD      DATA 		00000012 
+				A4       BYTE       DATA 		00000016 
+				E        LABEL      DATA 		00000000 
+				E1       LABEL      DATA 		00000000 
+				E2       LABEL      DATA 		00000000 
+				E23      LABEL      DATA 		00000000 
+				E25      LABEL      DATA 		00000000 
+				E8       LABEL      DATA 		00000000 
+				E9       LABEL      DATA 		00000000 
+				E0       LABEL      DATA 		00000000 
+				E10      LABEL      DATA 		00000000 
+				CODE     SEGMENT         		00000000 
+				L1       LABEL      CODE 		00000000 
+				L2       LABEL      CODE 		000002E1 
+
+				Помилки : Немає

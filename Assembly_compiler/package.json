@@ -1,0 +1,19 @@
+{
+  "name": "coursework",
+  "version": "1.0.0",
+  "description": "course work",
+  "main": "Main.js",
+  "type": "module",
+  "scripts": {
+
+  },
+  "keywords": [
+    "course"
+  ],
+  "author": "pasha",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
